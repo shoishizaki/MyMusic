@@ -1,16 +1,30 @@
-//
-//  ContentView.swift
-//  MyMusic
-//
-//  Created by 石崎將 on 2021/12/28.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    let soundPlayer = SoundPlayer()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        ZStack {
+            Image("background")
+                .resizable()
+                .edgesIgnoringSafeArea(.all).aspectRatio(contentMode: .fill)
+            
+            HStack {
+                Button(action: {
+                    soundPlayer.cymbalPlay()
+                }) {
+                    Image("cymbal")
+                        .renderingMode(.original)
+                }
+                
+                Button(action: {
+                    soundPlayer.guitarPlay()
+                }) {
+                    Image("guitar")
+                        .renderingMode(.original)
+                }
+            }
+        }
     }
 }
 
